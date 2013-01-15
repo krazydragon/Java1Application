@@ -17,9 +17,12 @@ public class appdata {
 		lParams = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 		eText.setHint(hint);
 		eText.setLayoutParams(lParams);
+		eText.setId(1);
 		
 		Button b = new Button(context);
 		b.setText(bText);
+		b.setId(2);
+		b.setTag(eText);
 		
 		lLayout.addView(eText);
 		lLayout.addView(b);

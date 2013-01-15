@@ -4,7 +4,11 @@ import com.rbarnes.lib.appdata;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
@@ -16,6 +20,19 @@ public class MainActivity extends Activity {
 		LinearLayout lLayout = new LinearLayout(this);
 		
 		LinearLayout textBox = appdata.EntryWithButton(this, "Type Please", "Press Me");
+		
+		Button testButton = (Button) textBox.findViewById(2);
+		
+		testButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				EditText testText = (EditText) v.getTag();
+				Log.i("BUTTON CLICKED:", testText.getText().toString());
+			}
+		});
+		
 		
 		lLayout.addView(textBox);
 		
