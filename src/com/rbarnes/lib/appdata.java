@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
-public class appdata {
+public class Appdata {
 
 	public static LinearLayout EntryWithButton(Context context, String hint, String bText){
 		LinearLayout lLayout = new LinearLayout(context);
@@ -33,6 +35,19 @@ public class appdata {
 		return lLayout;
 		
 		
+	}
+	
+	public static RadioGroup getGroup(Context context, String[] group){
+		RadioGroup boxes = new RadioGroup(context);
+		
+		for(int i=0; i<group.length; i++){
+			
+			RadioButton rButton = new RadioButton(context);
+			rButton.setText(group[i]);
+			boxes.addView(rButton);
+		}
+		
+		return boxes;
 	}
 	
 	

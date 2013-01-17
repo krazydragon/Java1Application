@@ -3,30 +3,41 @@
 //Full Sail University
 package com.rbarnes.other;
 
+
+
 public class Dessert implements Inventory {
 
+	
+	String name;
+	int stock;
+	
+	public Dessert(String name, int stock){
+		setName(name);
+		setStock(stock);
+	}
+	
 	@Override
 	public boolean setName(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		this.name = name;
+		return true;
 	}
 
 	@Override
 	public boolean setStock(int stock) {
-		// TODO Auto-generated method stub
-		return false;
+		this.stock = stock;
+		return true;
 	}
 
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.name;
 	}
 
 	@Override
 	public int getStock() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.stock;
 	}
 
 }
