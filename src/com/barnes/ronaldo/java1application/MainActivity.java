@@ -1,3 +1,7 @@
+//Ronaldo Barnes
+//Java 1 week 2
+//Full Sail University
+
 package com.barnes.ronaldo.java1application;
 
 import com.rbarnes.lib.appdata;
