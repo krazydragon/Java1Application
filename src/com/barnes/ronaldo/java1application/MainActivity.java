@@ -6,6 +6,7 @@ package com.barnes.ronaldo.java1application;
 
 import java.util.ArrayList;
 
+
 import com.rbarnes.lib.Appdata;
 import com.rbarnes.other.Dessert;
 
@@ -17,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioGroup;
 
 public class MainActivity extends Activity {
@@ -26,8 +29,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		LinearLayout lLayout = new LinearLayout(this);
+		LayoutParams lParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+		lLayout.setLayoutParams(lParams); 
+		lLayout.setOrientation(LinearLayout.VERTICAL);
 		
-		LinearLayout textBox = Appdata.EntryWithButton(this, "Type Please", "Press Me");
+		TextView tview = new TextView(this);
+	    tview.setText(getString(R.string.intro_text));
+		LinearLayout textBox = Appdata.EntryWithButton(this, getString(R.string.text_hint), getString(R.string.button_text));
 		
 		Button testButton = (Button) textBox.findViewById(2);
 		
@@ -54,6 +62,7 @@ public class MainActivity extends Activity {
 		
 		RadioGroup dessertOptions = Appdata.getGroup(this, dessertNames);
 		
+		lLayout.addView(tview);
 		lLayout.addView(dessertOptions);
 		
 		lLayout.addView(textBox);
