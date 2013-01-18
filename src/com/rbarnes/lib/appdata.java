@@ -1,9 +1,11 @@
 //Ronaldo Barnes
 //Java 1 week 2
+//January 2013
 //Full Sail University
 package com.rbarnes.lib;
 
 import android.content.Context;
+import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,6 +24,7 @@ public class Appdata {
 		lParams = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 		eText.setHint(hint);
 		eText.setLayoutParams(lParams);
+		eText.setInputType(InputType.TYPE_CLASS_NUMBER);
 		eText.setId(1);
 		
 		Button b = new Button(context);
@@ -44,6 +47,7 @@ public class Appdata {
 			
 			RadioButton rButton = new RadioButton(context);
 			rButton.setText(group[i]);
+			rButton.setId(i+1);
 			boxes.addView(rButton);
 		}
 		

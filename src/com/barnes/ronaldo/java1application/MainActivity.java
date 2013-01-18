@@ -1,5 +1,6 @@
 //Ronaldo Barnes
 //Java 1 week 2
+//January 2013
 //Full Sail University
 
 package com.barnes.ronaldo.java1application;
@@ -18,12 +19,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioGroup;
 
 public class MainActivity extends Activity {
 
+	RadioGroup dessertOptions;
+	ArrayList<Dessert> desserts;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,10 +48,36 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				EditText testText = (EditText) v.getTag();
-				Log.i("BUTTON CLICKED:", testText.getText().toString());
+				int selectedButtonId = dessertOptions.getCheckedRadioButtonId();
+				RadioButton selectedButton = (RadioButton) dessertOptions.findViewById(selectedButtonId);
+				String buttonText = (String) selectedButton.getText();
+				
+				int quantity = 0;
+				int newQuantity = 0;
+				
+				for(int i=0; i<desserts.size(); i++){
+					if(buttonText.compareTo(desserts.get(i).getName())==0){
+						
+						quantity = desserts.get(i).getStock();
+	
+					}
+					
+				}
+				
+				EditText amountText = (EditText) v.getTag();
+				
+				
+				 newQuantity = quantity -  Integer.parseInt(amountText.getText().toString());
+				 
+				 Log.i("BUTTON CLICKED:", amountText.getText().toString());
+				
+				
+				
+				
 			}
 		});
+		
+		//Set up desserts
 		ArrayList<Dessert> desserts = new ArrayList<Dessert>();
 		desserts.add(new Dessert("Cookies", 47));
 		desserts.add(new Dessert("Cakes", 106));
@@ -60,7 +90,7 @@ public class MainActivity extends Activity {
 			dessertNames[i] = desserts.get(i).getName();
 		}
 		
-		RadioGroup dessertOptions = Appdata.getGroup(this, dessertNames);
+		dessertOptions = Appdata.getGroup(this, dessertNames);
 		
 		lLayout.addView(tview);
 		lLayout.addView(dessertOptions);
